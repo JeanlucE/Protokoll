@@ -1,4 +1,5 @@
 import javax.swing.*;
+import java.awt.*;
 
 /**
  * Created with IntelliJ IDEA.
@@ -8,5 +9,7 @@ import javax.swing.*;
  * To change this template use File | Settings | File Templates.
  */
 public class AufbauCreator extends JFrame {
+    public AufbauCreator(){
 
+    }
 }

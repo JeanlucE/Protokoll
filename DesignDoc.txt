@@ -1,0 +1,13 @@
+Categories:
+- Titel
+- Materialien
+- Vorbereitung
+- Aufbau
+- Durchführung
+- Beobachtung
+- Erklärung
+- Buttons: Save As..., Exit
+
+Todo:
+AufbauCreator
+MaterialAdder

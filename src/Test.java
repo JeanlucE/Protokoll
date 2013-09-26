@@ -7,6 +7,7 @@
  */
 public class Test {
     public static void main(String[] args) {
-        MainWindow m = new MainWindow();
+        AufbauCreator ac = new AufbauCreator();
+
     }
 }

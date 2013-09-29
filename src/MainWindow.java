@@ -37,7 +37,6 @@ public class MainWindow extends JFrame{
             "Beobachtung",
             "Erklärung"
             };
-    private List<Material> materials = new ArrayList<Material>();
 
     public MainWindow(){
 
@@ -72,24 +71,29 @@ public class MainWindow extends JFrame{
         //Materialien
         inputPane[0] = new JPanel(new BorderLayout(5, 0));
         paneLabel[0] = new JLabel(paneTitle[0]);
-        paneLabel[0].setBorder(new EmptyBorder(10, 0, 5, 0));
-        inputPane[0].add(paneLabel[0], BorderLayout.NORTH);
+        paneLabel[0].setVerticalAlignment(JLabel.TOP);
 
-        final JPanel materialPanel = new JPanel();
-        materialPanel.setLayout(new BoxLayout(materialPanel, BoxLayout.Y_AXIS));
-        //TODO add method for adding materials
         JButton addMat = new JButton("Material hinzufügen");
+        JPanel labelPanel = new JPanel(new BorderLayout());
+        labelPanel.add(paneLabel[0], BorderLayout.WEST);
+        labelPanel.add(addMat, BorderLayout.EAST);
+        labelPanel.setBorder(new EmptyBorder(15, 0, 0, 0));
+
+        final MaterialPanel materialPanel = new MaterialPanel();
+
         addMat.addActionListener(new ActionListener() {
             Random r = new Random();
             public void actionPerformed(ActionEvent e) {
-                Material m = new Material(r.nextInt(100) + 1, "Chemiekalie",
+                Material m = new Material(r.nextInt(100) + 1, Unit.G, "Chemiekalie",
                         new Color(r.nextInt(255), r.nextInt(255), r.nextInt(255)));
-                materials.add(m);
-                materialPanel.add(new JLabel(m.getVolume() + "ml " + m.getName()));
-                materialPanel.validate();
+                materialPanel.addMaterial(m);
             }
         });
-        materialPanel.add(addMat);
+
+        inputPane[0].add(labelPanel, BorderLayout.NORTH);
+
+        //TODO add method for adding materials
+
         inputPane[0].add(materialPanel);
         inputPanel.add(inputPane[0]);
 
@@ -118,6 +122,4 @@ public class MainWindow extends JFrame{
         getContentPane().add(scrollPane, BorderLayout.CENTER);
         pack();
     }
-
-
 }

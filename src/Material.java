@@ -8,23 +8,33 @@ import java.awt.*;
  * To change this template use File | Settings | File Templates.
  */
 public class Material {
-    private float volume;
+    private float quantity;
+    private Unit unit;
     private String name;
     private Color color;
     //todo add concentration
 
-    public Material(int volume, String name, Color color) {
-        this.volume = volume;
+    public Material(int quantity, Unit unit, String name, Color color) {
+        this.quantity = quantity;
+        this. unit = unit;
         this.name = name;
         this.color = color;
     }
 
-    public float getVolume() {
-        return volume;
+    public float getQuantity() {
+        return quantity;
     }
 
-    public void setVolume(float volume) {
-        this.volume = volume;
+    public void setQuantity(float quantity) {
+        this.quantity = quantity;
+    }
+
+    public Unit getUnit() {
+        return unit;
+    }
+
+    public void setUnit(Unit unit) {
+        this.unit = unit;
     }
 
     public String getName() {

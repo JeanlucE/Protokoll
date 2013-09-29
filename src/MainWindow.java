@@ -2,6 +2,8 @@ import javax.swing.*;
 import javax.swing.border.Border;
 import javax.swing.border.EmptyBorder;
 import java.awt.*;
+import java.awt.event.FocusEvent;
+import java.awt.event.FocusListener;
 
 /**
  * Created with IntelliJ IDEA.
@@ -15,9 +17,8 @@ public class MainWindow extends JFrame{
     private JScrollPane scrollPane = null;
     private JPanel mainPanel = null;
 
-    private JPanel titlePanel = null;
-    //private JLabel title = null;
     private JTextField titleField = null;
+    private Font titleFont = new Font("Microsoft YaHei", Font.PLAIN, 30);
 
     private JPanel inputPanel = null;
     private JPanel[] inputPane = new JPanel[6];
@@ -37,16 +38,47 @@ public class MainWindow extends JFrame{
 
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         this.setVisible(true);
+        this.setTitle("Protokoll");
 
         mainPanel = new JPanel(new BorderLayout());
-        titlePanel = new JPanel(new FlowLayout(FlowLayout.LEFT));
-        titleField = new JTextField("Titel", 30);
-        titlePanel.add(titleField);
-        mainPanel.add(titlePanel, BorderLayout.NORTH);
+        titleField = new JTextField("Titel");
+        titleField.setFont(titleFont);
+        titleField.setBorder(BorderFactory.createCompoundBorder(titleField.getBorder(), new EmptyBorder(5,5,5,5)));
+        titleField.addFocusListener(new FocusListener() {
+            @Override
+            public void focusGained(FocusEvent e) {
+                if (titleField.getText().equals("Titel")) {
+                    titleField.setText("");
+                }
+            }
+
+            @Override
+            public void focusLost(FocusEvent e) {
+                if(titleField.getText().equals("")){
+                    titleField.setText("Titel");
+                }
+            }
+        });
+        mainPanel.add(titleField, BorderLayout.NORTH);
 
         inputPanel = new JPanel(new GridLayout(6, 1, 10, 20));
         Border blackBorder = BorderFactory.createLineBorder(Color.BLACK);
-        for (int i = 0; i < 6; i++) {
+
+        //Materialien
+        inputPane[0] = new JPanel(new BorderLayout(5, 0));
+        paneLabel[0] = new JLabel(paneTitle[0]);
+        paneLabel[0].setBorder(new EmptyBorder(10, 0, 5, 0));
+        inputPane[0].add(paneLabel[0], BorderLayout.NORTH);
+
+        //TODO add method for adding materials
+        JButton addMat = new JButton("Material hinzufügen");
+        JPanel materialPanel = new JPanel();
+        materialPanel.setLayout(new BoxLayout(materialPanel, BoxLayout.Y_AXIS));
+        materialPanel.add(addMat);
+        inputPane[0].add(materialPanel);
+        inputPanel.add(inputPane[0]);
+
+        for (int i = 1; i < 6; i++) {
             inputPane[i] = new JPanel(new BorderLayout(5, 0));
             paneLabel[i] = new JLabel(paneTitle[i]);
             paneLabel[i].setBorder(new EmptyBorder(0, 0, 5, 0));

@@ -15,7 +15,7 @@ import java.io.IOException;
 public class AufbauCreator extends JFrame {
     DrawingPanel dp = new DrawingPanel();
     public AufbauCreator(){
-        this.setSize(400, 400);
+        this.setSize(800, 550);
         this.setLayout(new GridLayout(1,1));
         this.add(dp);
         this.setResizable(false);
@@ -26,7 +26,7 @@ public class AufbauCreator extends JFrame {
     private class DrawingPanel extends JPanel{
 
         public DrawingPanel(){
-            this.setSize(400, 400);
+            this.setSize(800, 550);
         }
 
         public void paintComponent(Graphics g){
@@ -38,8 +38,9 @@ public class AufbauCreator extends JFrame {
                     RenderingHints.KEY_TEXT_ANTIALIASING,
                     RenderingHints.VALUE_TEXT_ANTIALIAS_OFF);
             g2d.drawString("Hello", 10, 10);
+            g2d.setColor(Color.BLUE);
             g2d.fillRect(0, 0, 200, 200);
-            g2d.setColor(Color.CYAN);
+            g2d.setColor(Color.pink);
             g2d.drawOval(200, 200, 20, 30);
             try {
                 BufferedImage in = ImageIO.read(new File("E:\\Pictures\\temp\\manulein.jpg"));

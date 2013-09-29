@@ -16,7 +16,7 @@ public class MainWindow extends JFrame{
     private JPanel mainPanel = null;
 
     private JPanel titlePanel = null;
-    private JLabel title= null;
+    private JLabel title = null;
     private JTextField titleField = null;
 
     private JPanel inputPanel = null;

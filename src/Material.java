@@ -11,13 +11,13 @@ public class Material {
     private float volume;
     private String name;
     private Color color;
+    //todo add concentration
 
     public Material(int volume, String name, Color color) {
         this.volume = volume;
         this.name = name;
         this.color = color;
     }
-
 
     public float getVolume() {
         return volume;

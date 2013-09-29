@@ -82,15 +82,13 @@ public class MainWindow extends JFrame{
         addMat.addActionListener(new ActionListener() {
             Random r = new Random();
             public void actionPerformed(ActionEvent e) {
-                materials.add(new Material(r.nextInt(100) + 1, "Chemiekalie",
-                        new Color(r.nextInt(255),r.nextInt(255),r.nextInt(255))));
+                Material m = new Material(r.nextInt(100) + 1, "Chemiekalie",
+                        new Color(r.nextInt(255), r.nextInt(255), r.nextInt(255)));
+                materials.add(m);
+                materialPanel.add(new JLabel(m.getVolume() + "ml " + m.getName()));
                 materialPanel.validate();
-                materialPanel.repaint();
             }
         });
-        for (Material m: materials){
-            materialPanel.add(new JLabel(m.getVolume() + " " + m.getName()));
-        }
         materialPanel.add(addMat);
         inputPane[0].add(materialPanel);
         inputPanel.add(inputPane[0]);

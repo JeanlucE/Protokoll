@@ -47,12 +47,12 @@ public class AufbauCreator extends JFrame {
             Font f = new Font("Times New Roman", Font.BOLD, 24);
             setFont(f);
             g2d.drawString("Geräte", 620, 25);
-            try {
+            /*try {
                 BufferedImage in = ImageIO.read(new File("E:\\Pictures\\temp\\manulein.jpg"));
                 g2d.drawImage(in, 10, 10, null);
             } catch (IOException e) {
                 System.out.println("bla");
-            }
+            }  */
 
 
         }

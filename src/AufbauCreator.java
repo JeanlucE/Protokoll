@@ -26,7 +26,7 @@ public class AufbauCreator extends JFrame {
     private class DrawingPanel extends JPanel{
 
         public DrawingPanel(){
-            this.setSize(800, 550);
+            this.setSize(550, 700);
         }
 
         public void paintComponent(Graphics g){
@@ -37,11 +37,16 @@ public class AufbauCreator extends JFrame {
             g2d.setRenderingHint(
                     RenderingHints.KEY_TEXT_ANTIALIASING,
                     RenderingHints.VALUE_TEXT_ANTIALIAS_OFF);
-            g2d.drawString("Hello", 10, 10);
             g2d.setColor(Color.BLUE);
-            g2d.fillRect(0, 0, 200, 200);
+            g2d.fillRect(600, 0, 450, 550);
+            g2d.setColor(Color.DARK_GRAY);
+            g2d.fillRect(775, 40, 20, 500);
             g2d.setColor(Color.pink);
-            g2d.drawOval(200, 200, 20, 30);
+            g2d.fillRect(600, 0, 200, 40);
+            g2d.setColor(Color.BLACK);
+            Font f = new Font("Times New Roman", Font.BOLD, 24);
+            setFont(f);
+            g2d.drawString("Geräte", 620, 25);
             try {
                 BufferedImage in = ImageIO.read(new File("E:\\Pictures\\temp\\manulein.jpg"));
                 g2d.drawImage(in, 10, 10, null);

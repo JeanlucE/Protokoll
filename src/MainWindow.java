@@ -2,8 +2,12 @@ import javax.swing.*;
 import javax.swing.border.Border;
 import javax.swing.border.EmptyBorder;
 import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.awt.event.FocusEvent;
 import java.awt.event.FocusListener;
+import java.util.*;
+import java.util.List;
 
 /**
  * Created with IntelliJ IDEA.
@@ -33,6 +37,7 @@ public class MainWindow extends JFrame{
             "Beobachtung",
             "Erklärung"
             };
+    private List<Material> materials = new ArrayList<Material>();
 
     public MainWindow(){
 
@@ -70,10 +75,22 @@ public class MainWindow extends JFrame{
         paneLabel[0].setBorder(new EmptyBorder(10, 0, 5, 0));
         inputPane[0].add(paneLabel[0], BorderLayout.NORTH);
 
+        final JPanel materialPanel = new JPanel();
+        materialPanel.setLayout(new BoxLayout(materialPanel, BoxLayout.Y_AXIS));
         //TODO add method for adding materials
         JButton addMat = new JButton("Material hinzufügen");
-        JPanel materialPanel = new JPanel();
-        materialPanel.setLayout(new BoxLayout(materialPanel, BoxLayout.Y_AXIS));
+        addMat.addActionListener(new ActionListener() {
+            Random r = new Random();
+            public void actionPerformed(ActionEvent e) {
+                materials.add(new Material(r.nextInt(100) + 1, "Chemiekalie",
+                        new Color(r.nextInt(255),r.nextInt(255),r.nextInt(255))));
+                materialPanel.validate();
+                materialPanel.repaint();
+            }
+        });
+        for (Material m: materials){
+            materialPanel.add(new JLabel(m.getVolume() + " " + m.getName()));
+        }
         materialPanel.add(addMat);
         inputPane[0].add(materialPanel);
         inputPanel.add(inputPane[0]);
@@ -102,7 +119,7 @@ public class MainWindow extends JFrame{
         this.setPreferredSize(new Dimension(550, 700));
         getContentPane().add(scrollPane, BorderLayout.CENTER);
         pack();
-        //System.out.println(this.size());
-        //System.out.println(textPane[0].getHeight());
     }
+
+
 }
